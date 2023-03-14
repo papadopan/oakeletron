@@ -3,30 +3,39 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Post } from '@/types';
+import Head from 'next/head';
 
 const Blog: NextPage<{ posts: Post[] }> = ({ posts }) => {
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <h1 className="text-4xl mb-8">Ανακοινώσεις</h1>
-      <div className="grid grid-cols-1 gap-16 xs:grid-cols-2 sm:grid-cols-3  lg:grid-cols-4">
-        {posts.map((post: any) => (
-          <div key={post.sys.id}>
-            <Link href={`blog/${post.fields.slug}`}>
-              <Image
-                src={`https:${post.fields.image.fields.file.url}`}
-                width={post.fields.image.fields.file.details.image.width}
-                height={post.fields.image.fields.file.details.image.height}
-                alt={post.fields.image.fields.title}
-                className="w-full h-48"
-              />
+    <>
+      <Head>
+        <title>Ανακοινώσεις-Κέλετρον Αντισφαίριση</title>
+        <meta name="description" content="keletron tennis blog" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="p-8 max-w-7xl mx-auto">
+        <h1 className="text-4xl mb-8">Ανακοινώσεις</h1>
+        <div className="grid grid-cols-1 gap-16 xs:grid-cols-2 sm:grid-cols-3  lg:grid-cols-4">
+          {posts.map((post: any) => (
+            <div key={post.sys.id}>
+              <Link href={`blog/${post.fields.slug}`}>
+                <Image
+                  src={`https:${post.fields.image.fields.file.url}`}
+                  width={post.fields.image.fields.file.details.image.width}
+                  height={post.fields.image.fields.file.details.image.height}
+                  alt={post.fields.image.fields.title}
+                  className="w-full h-48"
+                />
 
-              <h2>{post.fields.title}</h2>
-              <p>{post.fields.description}</p>
-            </Link>
-          </div>
-        ))}
+                <h2>{post.fields.title}</h2>
+                <p>{post.fields.description}</p>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
