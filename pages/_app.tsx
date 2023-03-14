@@ -4,11 +4,11 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
 export default function App({ Component, pageProps }: AppProps) {
-    return (
-        <>
-            <Header />
-            <Component {...pageProps} />;
-            <Footer />
-        </>
-    );
+  return (
+    <div className="min-h-screen">
+      <Header />
+      <Component {...pageProps} />;
+      <Footer />
+    </div>
+  );
 }
