@@ -7,7 +7,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className="min-h-screen">
       <Header />
-      <Component {...pageProps} />;
+      <div className="flex" style={{ minHeight: '80vh' }}>
+        <Component {...pageProps} />
+      </div>
       <Footer />
     </div>
   );
